@@ -6,7 +6,7 @@
             "type": "string",
             "metadata": {
                 "description": "region of resources"
-            }
+            },
 			"defaultValue": "West Europe"
 	},
        
