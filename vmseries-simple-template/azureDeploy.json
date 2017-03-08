@@ -320,9 +320,6 @@
         "type": "Microsoft.Network/networkInterfaces",
         "name": "[concat(variables('nicName'), '-eth1-1')]",
         "location": "[parameters('location')]",
-        "dependsOn": [
-            "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
-        ],
         "tags": {
             "displayName": "[concat('NetworkInterfaces', '1')]"
         },
@@ -344,9 +341,6 @@
         "type": "Microsoft.Network/networkInterfaces",
         "name": "[concat(variables('nicName'), '-eth1-2')]",
         "location": "[parameters('location')]",
-        "dependsOn": [
-            "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
-        ],
         "tags": {
             "displayName": "[concat('NetworkInterfaces', '2')]"
         },
