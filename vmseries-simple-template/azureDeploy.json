@@ -192,7 +192,7 @@
         "imagePublisher": "paloaltonetworks",
     	"imageSku" : "byol",
 	    "imageOffer" : "vmseries1",
-        "fwpublicIPName": "[concat(parameters('vmName'), '-MgmtPIP')]",
+        "fwpublicIPName": "[concat(parameters('vmName'), '-Mgmt-PIP')]",
         "nicName": "[parameters('vmName')]",
         "FWPrivateIPAddressUntrust": "[parameters('subnet1StartAddress')]",
         "FWPrivateIPAddressTrust": "[parameters('subnet2StartAddress')]",
