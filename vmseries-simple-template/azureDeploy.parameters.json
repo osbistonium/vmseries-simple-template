@@ -2,12 +2,6 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01-preview/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "location": {
-            "type": "string",
-            "metadata": {
-                "description": "region of resources"
-            }
-        },
         "newStorageAccount": {
             "type": "string",
             "metadata": {
