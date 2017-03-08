@@ -6,12 +6,21 @@
             "type": "string",
             "metadata": {
                 "description": "region of resources"
-            },
-			"defaultValue": "West Europe"
+            }
+        },
+        "newStorageAccount": {
+            "type": "string",
+            "metadata": {
+                "description": "Globally unique lowercase name of your storage account"
+            }
+        },
+        "storageAccountType": {
+            "type": "string",
+	    "metadata": {
+		"description": "The type of the Storage Account created"
+	    },
+	    "defaultValue":"Standard_LRS"
 	},
-<<<<<<< HEAD
-       
-=======
         "storageAccountNewOrExisting" : {
             "type": "string",
             "defaultValue" : "new",
@@ -30,7 +39,6 @@
                "description": "Storage Resource Group of the Existing VM."
             }
         },
->>>>>>> parent of 3e6087c... Removal of Storage Accounts References
         "dnsNameForPublicIP": {
             "type": "string",
             "metadata": {
@@ -390,7 +398,8 @@
       "name": "PAN-VM",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "dependsOn": [,
+      "dependsOn": [
+         "storageAcountSetup1",
          "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '0')]",
          "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '1')]",
          "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '2')]"
