@@ -4,6 +4,9 @@
     "parameters": {
         "location": {
             "type": "string",
+            "allowedValues": [
+                "West Europe"
+            ],			
 			"defaultValue": "West Europe",
             "metadata": {
                 "description": "region of resources"
