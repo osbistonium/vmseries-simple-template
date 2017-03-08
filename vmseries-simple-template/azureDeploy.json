@@ -7,31 +7,9 @@
             "metadata": {
                 "description": "region of resources"
             }
-        },
-        "newStorageAccount": {
-            "type": "string",
-            "metadata": {
-                "description": "Globally unique lowercase name of your storage account"
-            }
-        },
-        "storageAccountType": {
-            "type": "string",
-	    "metadata": {
-		"description": "The type of the Storage Account created"
-	    },
-	    "defaultValue":"Standard_LRS"
+			"defaultValue":"West Europe"
 	},
-        "storageAccountNewOrExisting" : {
-            "type": "string",
-            "defaultValue" : "new",
-            "allowedValues" : [
-                "new",
-                "existing"
-            ],
-            "metadata": {
-                "Description": "Indicates whether the Storage Account is new or existing"
-            }
-        },
+       
         "dnsNameForPublicIP": {
             "type": "string",
             "metadata": {
@@ -372,8 +350,7 @@
       "name": "PAN-VM",
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
-      "dependsOn": [
-         "storageAcountSetup1",
+      "dependsOn": [,
          "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '0')]",
          "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '1')]",
          "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '2')]"
