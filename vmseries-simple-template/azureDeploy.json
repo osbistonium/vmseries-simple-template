@@ -7,7 +7,7 @@
             "metadata": {
                 "description": "region of resources"
             }
-			"defaultValue":"West Europe"
+			"defaultValue": "West Europe"
 	},
        
         "dnsNameForPublicIP": {
