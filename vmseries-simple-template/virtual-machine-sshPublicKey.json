@@ -78,7 +78,7 @@
                     "version": "latest"
                 },
                 "osDisk": {
-                    "name": "osdisk",
+                    "name": "[parameters('vmName')]",
                     "caching": "ReadWrite",
                     "createOption": "FromImage"
                 }
