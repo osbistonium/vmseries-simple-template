@@ -192,7 +192,7 @@
         "imagePublisher": "paloaltonetworks",
     	"imageSku" : "byol",
 	    "imageOffer" : "vmseries1",
-        "fwpublicIPName": "[concat(parameters('vmName'), '-Mgmt-PIP')]",
+        "fwpublicIPName": "[concat(parameters('vmName'), '-Mgmt-pip')]",
         "nicName": "[parameters('vmName')]",
         "FWPrivateIPAddressUntrust": "[parameters('subnet1StartAddress')]",
         "FWPrivateIPAddressTrust": "[parameters('subnet2StartAddress')]",
@@ -286,40 +286,6 @@
                     "access": "Deny",
                     "priority": 200,
                     "direction": "Inbound"
-                }
-            }]
-        }
-    }, {
-        "apiVersion": "[variables('apiVersion')]",
-        "type": "Microsoft.Network/virtualNetworks",
-        "name": "[parameters('virtualNetworkName')]",
-        "location": "[parameters('location')]",
-        "dependsOn": [
-            "[concat('Microsoft.Network/networkSecurityGroups/', variables('nsgname-mgmt'))]"
-        ],
-        "properties": {
-            "addressSpace": {
-                "addressPrefixes": [
-                    "[parameters('virtualNetworkAddressPrefix')]"
-                ]
-            },
-            "subnets": [{
-                "name": "[parameters('subnet0Name')]",
-                "properties": {
-                    "addressPrefix": "[parameters('subnet0Prefix')]",
-                    "networkSecurityGroup": {
-                        "id": "[resourceId('Microsoft.Network/networkSecurityGroups', variables('nsgname-mgmt'))]"
-                    }
-                }
-            }, {
-                "name": "[parameters('subnet1Name')]",
-                "properties": {
-                    "addressPrefix": "[parameters('subnet1Prefix')]"
-                }
-            }, {
-                "name": "[parameters('subnet2Name')]",
-                "properties": {
-                    "addressPrefix": "[parameters('subnet2Prefix')]"
                 }
             }]
         }
