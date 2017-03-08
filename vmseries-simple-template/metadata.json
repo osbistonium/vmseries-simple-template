@@ -1,7 +1,13 @@
 {
   "itemDisplayName": "Simple ARM Template for a VM-Series VM (BYOL)",
   "description": "This template lets you do customized deployments of VM-Series instead of deploying from the Azure Marketplace. You can deploy using the "Deploy Azure" button  or download the template and customize it to your needs.",
+<<<<<<< HEAD
   "summary": "Copied from Template created by jigarhshah04 Simple ARM Template for a VM-Series VM with 3 NICs and subnets",
   "githubUsername": "osbistonium",
   "dateUpdated": "2017-03-08"
+=======
+  "summary": "Simple ARM Template for a VM-Series VM with 3 NICs and subnets",
+  "githubUsername": "jigarhshah04",
+  "dateUpdated": "2016-04-11"
+>>>>>>> parent of 3e6087c... Removal of Storage Accounts References
 }
