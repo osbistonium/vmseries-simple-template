@@ -403,7 +403,7 @@
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2015-01-01",
       "dependsOn": [
-         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), 'mgmt')]",
+         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '-mgmt')]",
          "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '-eth1-1')]",
          "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '-eth1-2')]"
       ],
