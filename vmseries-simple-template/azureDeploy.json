@@ -107,7 +107,7 @@
 		"metadata": {
 			"artifactsBaseUrl": ""
 		},
-		"defaultValue": "https://raw.githubusercontent.com/saurabhtrekker/UI1/master"
+		"defaultValue": "https://raw.githubusercontent.com/osbistonium/vmseries-simple-template/master/vmseries-simple-template"
 	},
     "virtualNetworkName": {
       "type": "string",
