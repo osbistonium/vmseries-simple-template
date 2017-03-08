@@ -4,10 +4,10 @@
     "parameters": {
         "location": {
             "type": "string",
+			"defaultValue": "West Europe",
             "metadata": {
                 "description": "region of resources"
-            },
-			"defaultValue":"West Europe"
+            }
         },	
         "newStorageAccount": {
             "type": "string",
