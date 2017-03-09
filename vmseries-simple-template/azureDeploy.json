@@ -230,6 +230,7 @@
         "nicName": "[parameters('vmName')]",
         "FWPrivateIPAddressUntrust": "[parameters('subnet1StartAddress')]",
         "FWPrivateIPAddressTrust": "[parameters('subnet2StartAddress')]",
+		"FWPrivateIPAddressNAT": "[parameters('subnet3StartAddress')]",
         "publicIPAddressType": "Dynamic",
         "vnetID": "[resourceId(parameters('existingVirtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
         "nsgname-mgmt": "[concat(parameters('vmName'), '-nsg')]",
@@ -405,7 +406,7 @@
                 "name": "[concat('ipconfig', '3')]",
                 "properties": {
                     "privateIPAllocationMethod": "Static",
-                    "privateIPAddress": "[variables('FWPrivateIPAddressTrust')]",
+                    "privateIPAddress": "[variables('FWPrivateIPAddressNAT')]",
                     "subnet": {
                         "id": "[variables(concat('subnet','3','Ref'))]"
                     }
