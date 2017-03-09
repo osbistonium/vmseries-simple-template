@@ -86,6 +86,13 @@
                 "description": "SSH rsa public key file as a string."
             }
         },
+        "availabilitySetName": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Name of the exisitng Availability Set."
+            }
+        },
         "vmSize": {
             "type": "string",
             "allowedValues": [
@@ -198,13 +205,13 @@
         "imagePublisher": "paloaltonetworks",
     	"imageSku" : "byol",
 	    "imageOffer" : "vmseries1",
-        "fwpublicIPName": "[concat(parameters('vmName'), '-Mgmt-pip')]",
+        "fwpublicIPName": "[concat(parameters('vmName'), '-mgmt-pip')]",
         "nicName": "[parameters('vmName')]",
         "FWPrivateIPAddressUntrust": "[parameters('subnet1StartAddress')]",
         "FWPrivateIPAddressTrust": "[parameters('subnet2StartAddress')]",
         "publicIPAddressType": "Dynamic",
         "vnetID": "[resourceId(parameters('existingVirtualNetworkResourceGroup'), 'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
-        "nsgname-mgmt": "[concat(parameters('vmName'), '-DefaultNSG')]",
+        "nsgname-mgmt": "[concat(parameters('vmName'), '-nsg')]",
         "subnet0Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet0Name'))]",
         "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",
         "subnet2Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet2Name'))]",
@@ -411,6 +418,9 @@
           },
           "sshKey": {
             "value": "[parameters('sshKey')]"
+          },
+          "availabilitySetName": {
+			"value": "[variables('availabilitySetName')]"
           }
         }
       }
