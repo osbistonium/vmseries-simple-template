@@ -11,37 +11,6 @@
             "metadata": {
                 "description": "region of resources"
             }
-        },	
-        "newStorageAccount": {
-            "type": "string",
-            "metadata": {
-                "description": "Globally unique lowercase name of your storage account"
-            }
-        },
-        "storageAccountType": {
-            "type": "string",
-	    "metadata": {
-		"description": "The type of the Storage Account created"
-	    },
-	    "defaultValue":"Standard_LRS"
-	},
-        "storageAccountNewOrExisting" : {
-            "type": "string",
-            "defaultValue" : "new",
-            "allowedValues" : [
-                "new",
-                "existing"
-            ],
-            "metadata": {
-                "Description": "Indicates whether the Storage Account is new or existing"
-            }
-        },
-        "existingStorageAccountRG": {
-            "type": "string",
-            "defaultValue" : "",
-            "metadata": {
-               "description": "Storage Resource Group of the Existing VM."
-            }
         },
         "dnsNameForPublicIP": {
             "type": "string",
@@ -238,36 +207,10 @@
         "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",
         "subnet2Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet2Name'))]",
 		"subnet3Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet3Name'))]",
-	"storageAccountSetupURL" : "[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
-	"vmTemplateUrl": "[concat(parameters('baseUrl'), '/virtual-machine-', parameters('authenticationType'),'.json')]"
+		"vmTemplateUrl": "[concat(parameters('baseUrl'), '/virtual-machine-', parameters('authenticationType'),'.json')]"
     },
     "resources": [
-    {
-	"name": "storageAcountSetup1",
-	"type": "Microsoft.Resources/deployments",
-        "apiVersion": "2015-01-01",
-	"properties" : {
-		"mode": "Incremental",
-		"templateLink" : {
-		"uri" : "[variables('storageAccountSetupURL')]",
-		"contentVersion": "1.0.0.0"
-	},
-	"parameters" : {
-		"location": {
-			"value": "[parameters('location')]"
-		},
-		"storageAccountType": {
-			"value": "[parameters('storageAccountType')]"
-		},
-		"newStorageAccount" : {
-			"value": "[parameters('newStorageAccount')]"
-		},
-		"storageAccountExistingRG": {
-			"value": "[parameters('existingStorageAccountRG')]"
-		}
-	  }
-        }
-    }, {
+	{
         "apiVersion": "[variables('apiVersion')]",
         "type": "Microsoft.Network/publicIPAddresses",
         "name": "[variables('fwpublicIPName')]",
@@ -457,9 +400,6 @@
           },
           "adminPassword": {
             "value": "[parameters('adminPassword')]"
-          },
-          "newStorageAccount": {
-            "value": "[parameters('newStorageAccount')]"
           },
           "sshKey": {
             "value": "[parameters('sshKey')]"
