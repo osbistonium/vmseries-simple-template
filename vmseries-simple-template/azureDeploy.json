@@ -291,6 +291,9 @@
         }
     }, {
         "apiVersion": "[variables('apiVersion')]",
+        "type": "Microsoft.Network/virtualNetworks"
+		}, {
+		"apiVersion": "[variables('apiVersion')]",
         "type": "Microsoft.Network/networkInterfaces",
         "name": "[concat(variables('nicName'), '-mgmt')]",
         "location": "[parameters('location')]",
