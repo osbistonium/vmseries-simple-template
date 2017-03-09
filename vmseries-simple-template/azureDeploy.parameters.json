@@ -150,6 +150,13 @@
         "description": "Subnet for the Trust"
       }
     },
+    "subnet3Name": {
+      "type": "string",
+      "defaultValue": "NAT",
+      "metadata": {
+        "description": "Subnet for the NAT"
+      }
+    },
     "subnet0Prefix": {
       "type": "string",
       "defaultValue": "192.168.0.0/24",
