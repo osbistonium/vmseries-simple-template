@@ -290,16 +290,12 @@
             }]
         }
     }, {
-        "apiVersion": "[variables('apiVersion')]",
-        "type": "Microsoft.Network/virtualNetworks"
-		}, {
 		"apiVersion": "[variables('apiVersion')]",
         "type": "Microsoft.Network/networkInterfaces",
         "name": "[concat(variables('nicName'), '-mgmt')]",
         "location": "[parameters('location')]",
         "dependsOn": [
-            "[concat('Microsoft.Network/publicIPAddresses/', variables('fwpublicIPName'))]",
-            "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
+            "[concat('Microsoft.Network/publicIPAddresses/', variables('fwpublicIPName'))]"
         ],
         "tags": {
             "displayName": "[concat('NetworkInterfaces', '0')]"
