@@ -116,6 +116,12 @@
       },
       "defaultValue": "panVnet"
     },
+	"existingVirtualNetworkResourceGroup": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the existing Resource group where the virtual network that the consumer wants to use is"
+      }
+    },
     "virtualNetworkAddressPrefix": {
       "type": "string",
       "defaultValue": "192.168.0.0/16",
