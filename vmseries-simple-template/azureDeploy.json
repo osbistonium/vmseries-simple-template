@@ -420,7 +420,7 @@
             "value": "[parameters('sshKey')]"
           },
           "availabilitySetName": {
-			"value": "[variables('availabilitySetName')]"
+			"value": "[parameters('availabilitySetName')]"
           }
         }
       }
