@@ -171,6 +171,13 @@
         "description": "Trust subnet CIDR"
       }
     },
+    "subnet3Prefix": {
+      "type": "string",
+      "defaultValue": "192.168.2.0/24",
+      "metadata": {
+        "description": "NAT subnet CIDR"
+      }
+    },	
     "subnet0StartAddress": {
       "type": "string",
       "defaultValue": "192.168.0.4",
@@ -190,6 +197,12 @@
       "defaultValue": "192.168.2.4",
       "metadata": {
         "description": "Trust subnet start address"
+      },
+    "subnet3StartAddress": {
+      "type": "string",
+      "defaultValue": "192.168.2.4",
+      "metadata": {
+        "description": "NAT subnet start address"
       }
     }
     }

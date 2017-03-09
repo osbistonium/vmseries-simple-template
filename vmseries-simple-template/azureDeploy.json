@@ -178,6 +178,13 @@
         "description": "Trust subnet CIDR"
       }
     },
+    "subnet3Prefix": {
+      "type": "string",
+      "defaultValue": "192.168.2.0/24",
+      "metadata": {
+        "description": "NAT subnet CIDR"
+      }
+    },	
     "subnet0StartAddress": {
       "type": "string",
       "defaultValue": "192.168.0.4",
@@ -198,6 +205,13 @@
       "metadata": {
         "description": "Trust subnet start address"
       }
+    },
+    "subnet3StartAddress": {
+      "type": "string",
+      "defaultValue": "192.168.2.4",
+      "metadata": {
+        "description": "NAT subnet start address"
+      }
     }
     },
     "variables": {
@@ -215,6 +229,7 @@
         "subnet0Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet0Name'))]",
         "subnet1Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet1Name'))]",
         "subnet2Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet2Name'))]",
+		"subnet3Ref": "[concat(variables('vnetID'),'/subnets/',parameters('subnet2Name'))]",
 	"storageAccountSetupURL" : "[concat(parameters('baseUrl'),'/storageAccount-',parameters('storageAccountNewOrExisting'),'.json')]",
 	"vmTemplateUrl": "[concat(parameters('baseUrl'), '/virtual-machine-', parameters('authenticationType'),'.json')]"
     },
@@ -258,7 +273,7 @@
     }, {
         "apiVersion": "[variables('apiVersion')]",
         "type": "Microsoft.Network/networkSecurityGroups",
-        "name": "[concat(parameters('vmName'), '-DefaultNSG')]",
+        "name": "[concat(parameters('vmName'), '-nsg')]",
         "location": "[parameters('location')]",
         "properties": {
             "securityRules": [{
@@ -369,6 +384,27 @@
                 }
             }]
         }
+    },  {
+        "apiVersion": "[variables('apiVersion')]",
+        "type": "Microsoft.Network/networkInterfaces",
+        "name": "[concat(variables('nicName'), '-eth1-3')]",
+        "location": "[parameters('location')]",
+        "tags": {
+            "displayName": "[concat('NetworkInterfaces', '3')]"
+        },
+        "properties": {
+            "enableIPForwarding": true,
+            "ipConfigurations": [{
+                "name": "[concat('ipconfig', '3')]",
+                "properties": {
+                    "privateIPAllocationMethod": "Static",
+                    "privateIPAddress": "[variables('FWPrivateIPAddressTrust')]",
+                    "subnet": {
+                        "id": "[variables(concat('subnet','3','Ref'))]"
+                    }
+                }
+            }]
+        }
     },
     {
       "name": "PAN-VM",
@@ -377,7 +413,8 @@
       "dependsOn": [
          "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '-mgmt')]",
          "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '-eth1-1')]",
-         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '-eth1-2')]"
+		 "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '-eth1-2')]",
+         "[concat('Microsoft.Network/networkInterfaces/', variables('nicName'), '-eth1-3')]"
       ],
       "properties": {
         "mode": "Incremental",
